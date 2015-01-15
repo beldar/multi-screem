@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/main.css">
+        <title>Multi Screen Viewer - Upload</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <% if (success) { %>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Success!</strong> File uploaded and cropped successfuly! <br/><br/>
+                <p>
+                    Links:
+                    <ul>
+                        <% for(var i in links){ %>
+                        <li><a href="<%=links[i]%>"><%=links[i]%></a></li>
+                        <% } %>
+                    </ul>
+                </p>
+            </div>
+            <% } %>
+            <% if (error) { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Error!</strong> Something went wrong!<br />
+                <p><%=errormsg%></p>
+            </div>
+            <% } %>
+            <h1>New file</h1>
+            <form method="post" action="/upload" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">File Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label for="columns">Columns</label>
+                    <input type="text" name="columns" class="form-control" id="columns" placeholder="1">
+                </div>
+                <div class="form-group">
+                    <label for="rows">Rows</label>
+                    <input type="text" name="rows" class="form-control" id="rows" placeholder="1">
+                </div>
+                <div class="form-group">
+                    <label for="image">File input</label>
+                    <input type="file" name="image" id="image">
+                    <p class="help-block">Image will be croped into columns and rows</p>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <br/><br/>
+            <a href="/">Go to control</a>
+        </div>
+    </body>
+</html>

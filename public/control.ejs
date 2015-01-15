@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/main.css">
+        <title>Multi Screen Viewer - Control</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <% if (typeof success !== 'undefined') { %>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Success!</strong> <%=success%>
+            </div>
+            <% } %>
+            <% if (typeof error !== 'undefined') { %>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Error!</strong> Something went wrong!<br />
+                <p><%=error%></p>
+            </div>
+            <% } %>
+            <h1>Files available</h1>
+            <div class="row">
+                <% for(var i=0; i< files.length; i++) {%>
+                <div class="col-xs-6 col-md-3">
+                    <a id="<%=files[i]._id%>" href="#" class="thumbnail">
+                        <img src="/uploads/<%=files[i].filename%>" alt="...">
+                    </a>
+                    <a href="/delete/<%=files[i]._id%>" class="btn btn-danger">Delete</a>
+                    <br/><br/>
+                </div>
+                <% } %>
+            </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/control.js"></script>
+    </body>
+</html>

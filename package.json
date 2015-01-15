@@ -1,0 +1,21 @@
+{
+  "name": "multi-screens",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marti Planellas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.11.0",
+    "socket.io": "^1.2.1",
+    "ejs": "^2.1.4",
+    "lwip": "0.0.6",
+    "multer": "^0.1.7",
+    "nedb": "^1.1.1",
+    "q": "^1.1.2",
+    "fluent-ffmpeg": "^2.0.0-rc3"
+  }
+}
