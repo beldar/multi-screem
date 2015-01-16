@@ -87,7 +87,8 @@ app.post('/upload', function (req, res) {
             path: req.files.image.path,
             extension: req.files.image.extension,
             size: req.files.image.size,
-            chunks: chunks
+            chunks: chunks,
+            type: helpers.getType(req.files.image.name)
         };
         
         console.log('Trying to insert file', file);
@@ -150,7 +151,7 @@ io.on('connection', function (socket) {
         if (loaded == currentFile.chunks) {
             var when = Date.now() + maxlat;
             console.log('Emit show');
-            socket.broadcast.emit('show', {when: when});
+            io.sockets.emit('show', {when: when});
         }
     });
 });
